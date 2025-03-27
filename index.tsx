@@ -2,15 +2,13 @@
 require('dotenv').config()
 
 // Require needed node modules
-const express = require('express')
+import express, { Request, Response } from 'express'
 
 // Initialize your application by calling the function returned by the express module
 const app = express()
 
-// Declare routes that people can visit on the application
-
 // White Page
-app.get('/', function (req, res) {
+app.get('/', function (req: Request, res: Response) {
     res.send(`
         <body style="margin: 0;">
             <div style="border: 1px solid black; height: 10vh; background-color: white;">
@@ -21,9 +19,8 @@ app.get('/', function (req, res) {
     `)
 })
 
-
 // Color Page
-app.get('/:color', function (req, res) {
+app.get('/:color', function (req: Request, res: Response) {
     let myColor = req.params.color
     res.send(`
         <body style="margin: 0;">
@@ -34,7 +31,6 @@ app.get('/:color', function (req, res) {
         </body>
     `)
 })
-
 
 // Listen to a port number defined by a local environment variable
 app.listen(process.env.PORT)
